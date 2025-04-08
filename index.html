@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunity Listings</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+       /* General body styling */
+body {
+    font-family: sans-serif; /* Use a common sans-serif font */
+    line-height: 1.6;      /* Spacing between lines of text */
+    margin: 0;             /* Remove default browser margin */
+    background-color: #f4f4f4; /* Light grey background */
+    color: #333;           /* Dark grey text color */
+}
+
+/* Header styling */
+header {
+    background-color: #0056b3; /* A nice blue background */
+    color: #ffffff;           /* White text */
+    padding: 20px 0;          /* Add padding top/bottom */
+    text-align: center;
+}
+
+/* Main content area */
+main {
+    width: 80%;             /* Make main content area narrower */
+    max-width: 900px;       /* But not wider than 900px */
+    margin: 20px auto;      /* Add space top/bottom, center it horizontally */
+    background-color: #ffffff; /* White background for content */
+    padding: 20px;
+    border-radius: 8px;       /* Slightly rounded corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* Styling for individual job listings */
+.job-listing {
+    border: 1px solid #e0e0e0; /* Lighter border */
+    padding: 15px;
+    margin-bottom: 20px;      /* Add more space between listings */
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* Styling for the filter section */
+.filter-section {
+    background-color: #e9ecef; /* Slightly different background */
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+/* Styling for headings */
+h1, h2, h3 {
+    color: #0056b3; /* Use the header blue for headings */
+}
+
+h1 {
+    margin: 0; /* Remove default margin from main heading */
+}
+
+/* Make labels within job listings stand out */
+.job-listing strong {
+    display: inline-block;
+    min-width: 150px; /* Give labels more space */
+    color: #555;      /* Slightly lighter label color */
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: #777;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Basic button styling (for the placeholder button) */
+button {
+    padding: 10px 15px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Change cursor on hover */
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Job & Opportunity Portal</h1>
+    </header>
+
+    <main>
+        <section class="filter-section">
+            <h2>Find Opportunities</h2>
+            <p>
+                <!-- Placeholder for actual filter controls -->
+                Filter by City: [Dropdown Here] <br>
+                Filter by Department: [Dropdown/Checkboxes Here] <br>
+                Filter by Exam: [Dropdown/Checkboxes Here] <br>
+                <button>Search</button>
+            </p>
+        </section>
+
+        <section class="listings-section">
+            <h2>Current Openings</h2>
+
+            <article class="job-listing">
+                <h3>Expert Personnel Recruitment</h3>
+                <p><strong>Institution:</strong> Example Ministry</p>
+                <p><strong>City:</strong> Ankara</p>
+                <p><strong>Required Departments:</strong> Computer Engineering, Statistics</p>
+                <p><strong>Required Exams:</strong> KPSS P3 (Min 75), YDS (Min C)</p>
+                <p><strong>Deadline:</strong> 2024-12-31</p>
+                <p><a href="#">More Details</a></p>
+            </article>
+
+            <article class="job-listing">
+                <h3>Engineer Position</h3>
+                <p><strong>Institution:</strong> State Water Works (DSİ)</p>
+                <p><strong>City:</strong> İstanbul</p>
+                <p><strong>Required Departments:</strong> Civil Engineering</p>
+                <p><strong>Required Exams:</strong> KPSS P3 (Min 80)</p>
+                <p><strong>Deadline:</strong> 2024-11-30</p>
+                <p><a href="#">More Details</a></p>
+            </article>
+
+            <article class="job-listing">
+                <h3>Administrative Staff</h3>
+                <p><strong>Institution:</strong> Local Municipality</p>
+                <p><strong>City:</strong> İzmir</p>
+                <p><strong>Required Departments:</strong> Public Administration, Business Administration</p>
+                <p><strong>Required Exams:</strong> KPSS P93 (Min 70)</p>
+                <p><strong>Deadline:</strong> 2025-01-15</p>
+                <p><a href="#">More Details</a></p>
+            </article>
+
+            <!-- Add more job listings here -->
+
+        </section>
+    </main>
+
+    <footer>
+        <p>        <section class="filter-section">
+            <h2>Find Opportunities</h2>
+            <form action="#" method="get"    <main>
+
+                <section class="filter-section">
+                    <h2>Find Opportunities</h2>
+                    <form action="#" method="get"> <!-- START of the form -->
+        
+                        <div>
+                            <label for="city-filter">Filter by City:</label>
+                            <select id="city-filter" name="city">
+                                <option value="">-- Select a City --</option>
+                                <option value="ankara">Ankara</option>
+                                <option value="istanbul">İstanbul</option>
+                                <option value="izmir">İzmir</option>
+                                <option value="bursa">Bursa</option>
+                                <option value="adana">Adana</option>
+                                <!-- Add more cities later -->
+                            </select>
+                        </div>
+        
+                        <div style="margin-top: 10px;">
+                            <label for="department-filter">Filter by Department:</label>
+                            <input type="text" id="department-filter" name="department" placeholder="e.g., Computer Engineering">
+                        </div>
+        
+                        <div style="margin-top: 10px;">
+                            <label for="exam-filter">Filter by Exam:</label>
+                            <input type="text" id="exam-filter" name="exam" placeholder="e.g., KPSS P3">
+                        </div>
+        
+                        <div style="margin-top: 15px;">
+                            <button type="submit">Search</button>
+                        </div>
+        
+                    </form> <!-- END of the form -->
+                </section> <!-- END of the filter section -->
+        
+        
+                <section class="listings-section">
+                    <h2>Current Openings</h2>
+                    <!-- Job listings go here -->
+                    <article class="job-listing"> ... </article>
+                    <article class="job-listing"> ... </article>
+                    <article class="job-listing"> ... </article>
+                </section>
+        
+            </main>
+
+            </form> <!-- Close the form tag -->
+        </section></p>
+    </footer>
+
+    <!-- You would link your JavaScript file here later -->
+    <!-- <script src="script.js"></script> -->
+
+</body>
+</html>
