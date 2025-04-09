@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opportunity Listings</title>
+    <title>Opportunity Portal</title>
     <!-- Removed link to style.css as CSS is embedded -->
     <!-- <link rel="stylesheet" href="style.css"> -->
 
@@ -15,6 +15,9 @@
             margin: 0;
             background-color: #f4f4f4;
             color: #333;
+            display: flex; /* Use flexbox for overall layout */
+            flex-direction: column; /* Stack header, page-container, footer vertically */
+            min-height: 100vh; /* Ensure footer stays at bottom */
         }
 
         /* Header styling */
@@ -23,17 +26,68 @@
             color: #ffffff;
             padding: 20px 0;
             text-align: center;
+            width: 100%; /* Span full width */
         }
 
-        /* Main content area */
-        main {
-            width: 80%;
-            max-width: 900px;
-            margin: 20px auto;
+        /* NEW: Container for the two columns (nav + main) */
+        .page-container {
+            display: flex; /* Arrange nav and main side-by-side */
+            width: 90%;     /* Overall width of the content area */
+            max-width: 1200px; /* Limit maximum width */
+            margin: 20px auto; /* Center the container and add vertical space */
+            gap: 20px;       /* Space between nav and main */
+            flex-grow: 1; /* Allow this container to grow to fill space */
+        }
+
+        /* NEW: Left Navigation Panel Styling */
+        .left-nav {
+            flex: 0 0 200px; /* Don't grow, don't shrink, base width 200px */
             background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: fit-content; /* Adjust height to content */
+        }
+
+        .left-nav h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #0056b3;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .left-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .left-nav li a {
+            display: block;
+            padding: 10px 5px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease; /* Smooth hover effect */
+        }
+
+        .left-nav li a:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
+        /* --- End Left Nav Styling --- */
+
+
+        /* Main content area - Adjusted */
+        main {
+            flex: 1; /* Take up remaining horizontal space */
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            /* Removed width, max-width, margin:auto as .page-container handles this now */
         }
 
         /* Styling for individual job listings */
@@ -49,7 +103,7 @@
         .filter-section {
             background-color: #e9ecef;
             padding: 20px;
-            margin-bottom: 30px; /* Increased space before listings */
+            margin-bottom: 30px;
             border-radius: 5px;
             border: 1px solid #ced4da;
         }
@@ -59,49 +113,47 @@
             color: #0056b3;
         }
 
-        h1 {
-            margin: 0;
-        }
-
-        h3 {
-             margin-top: 0; /* Adjust heading spacing in listing */
-        }
+        h1 { margin: 0; }
+        main h2 { margin-top: 0; } /* Adjust H2 inside main */
+        h3 { margin-top: 0; }
 
         /* Make labels within job listings stand out */
         .job-listing strong {
             display: inline-block;
-            min-width: 150px;
+            min-width: 150px; /* Adjust as needed */
             color: #555;
         }
 
         /* Footer styling */
         footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: auto; /* Pushes footer down if content is short */
             padding: 20px;
             color: #777;
             border-top: 1px solid #e0e0e0;
-            background-color: #f4f4f4; /* Match body background */
+            background-color: #f4f4f4;
+            width: 100%; /* Span full width */
         }
 
         /* Basic button styling */
-        button {
+        button, input[type="submit"] { /* Apply to buttons and submit inputs */
             padding: 10px 15px;
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em; /* Make button text slightly larger */
+            font-size: 1em;
+            transition: background-color 0.2s ease;
         }
 
-        button:hover {
+        button:hover, input[type="submit"]:hover {
             background-color: #218838;
         }
 
         /* Styling for form elements */
         .filter-section label {
-            display: block; /* Put label on its own line */
+            display: block;
             margin-bottom: 5px;
             font-weight: bold;
             color: #333;
@@ -109,25 +161,26 @@
 
         .filter-section select,
         .filter-section input[type="text"] {
-            width: 95%; /* Make input fields wider */
+            width: 100%; /* Use full width of container div */
             padding: 8px;
-            margin-bottom: 10px; /* Space below input */
+            margin-bottom: 10px;
             border: 1px solid #ced4da;
             border-radius: 4px;
             box-sizing: border-box; /* Include padding in width */
         }
 
-        .filter-section div { /* Add some space between filter groups */
+        .filter-section form div { /* Space between filter groups */
              margin-bottom: 15px;
         }
 
          .filter-section button[type="submit"] {
-             margin-top: 10px; /* Add space above the search button */
+             margin-top: 10px;
          }
 
          .job-listing a {
              color: #0056b3;
              text-decoration: none;
+             font-weight: bold;
          }
          .job-listing a:hover {
              text-decoration: underline;
@@ -141,87 +194,109 @@
         <h1>Job & Opportunity Portal</h1>
     </header>
 
-    <main>
-        <!-- ****** FILTER SECTION - Correctly placed at the top ****** -->
-        <section class="filter-section">
-            <h2>Find Opportunities</h2>
-            <form action="#" method="get"> <!-- The actual form for filtering -->
-                <div>
-                    <label for="city-filter">Filter by City:</label>
-                    <select id="city-filter" name="city">
-                        <option value="">-- Select a City --</option>
-                        <option value="ankara">Ankara</option>
-                        <option value="istanbul">İstanbul</option>
-                        <option value="izmir">İzmir</option>
-                        <option value="bursa">Bursa</option>
-                        <option value="adana">Adana</option>
-                        <!-- Add more cities later -->
-                    </select>
-                </div>
+    <!-- Container for Nav and Main Content -->
+    <div class="page-container">
 
-                <div>
-                    <label for="department-filter">Filter by Department:</label>
-                    <input type="text" id="department-filter" name="department" placeholder="e.g., Computer Engineering">
-                </div>
-
-                <div>
-                    <label for="exam-filter">Filter by Exam:</label>
-                    <input type="text" id="exam-filter" name="exam" placeholder="e.g., KPSS P3">
-                </div>
-
-                <div>
-                    <button type="submit">Search</button>
-                </div>
-            </form> <!-- END of the form -->
-        </section> <!-- END of the filter section -->
+        <!-- ****** NEW: Left Navigation Panel ****** -->
+        <nav class="left-nav">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#">KPSS A İlanları</a></li>
+                <li><a href="#">KPSS B İlanları</a></li>
+                <li><a href="#">Üniversite İlanları</a></li>
+                <li><a href="#">İşçi İlanları</a></li>
+                <!-- Add more categories as needed -->
+                 <li><a href="#">Diğer Kamu İlanları</a></li>
+                 <li><a href="#">Özel Sektör İlanları</a></li>
+            </ul>
+        </nav>
+        <!-- ****** End Left Navigation Panel ****** -->
 
 
-        <!-- ****** LISTINGS SECTION - Follows the filter section ****** -->
-        <section class="listings-section">
-            <h2>Current Openings</h2>
+        <!-- ****** Main Content Area (Filters + Listings) ****** -->
+        <main>
+            <!-- Filter Section -->
+            <section class="filter-section">
+                <h2>Find Opportunities</h2>
+                <form action="#" method="get">
+                    <div>
+                        <label for="city-filter">Filter by City:</label>
+                        <select id="city-filter" name="city">
+                            <option value="">-- Select a City --</option>
+                            <option value="ankara">Ankara</option>
+                            <option value="istanbul">İstanbul</option>
+                            <option value="izmir">İzmir</option>
+                            <option value="bursa">Bursa</option>
+                            <option value="adana">Adana</option>
+                            <!-- Add more cities later -->
+                        </select>
+                    </div>
 
-            <article class="job-listing">
-                <h3>Expert Personnel Recruitment</h3>
-                <p><strong>Institution:</strong> Example Ministry</p>
-                <p><strong>City:</strong> Ankara</p>
-                <p><strong>Required Departments:</strong> Computer Engineering, Statistics</p>
-                <p><strong>Required Exams:</strong> KPSS P3 (Min 75), YDS (Min C)</p>
-                <p><strong>Deadline:</strong> 2024-12-31</p>
-                <p><a href="#">More Details</a></p>
-            </article>
+                    <div>
+                        <label for="department-filter">Filter by Department:</label>
+                        <input type="text" id="department-filter" name="department" placeholder="e.g., Computer Engineering">
+                    </div>
 
-            <article class="job-listing">
-                <h3>Engineer Position</h3>
-                <p><strong>Institution:</strong> State Water Works (DSİ)</p>
-                <p><strong>City:</strong> İstanbul</p>
-                <p><strong>Required Departments:</strong> Civil Engineering</p>
-                <p><strong>Required Exams:</strong> KPSS P3 (Min 80)</p>
-                <p><strong>Deadline:</strong> 2024-11-30</p>
-                <p><a href="#">More Details</a></p>
-            </article>
+                    <div>
+                        <label for="exam-filter">Filter by Exam:</label>
+                        <input type="text" id="exam-filter" name="exam" placeholder="e.g., KPSS P3">
+                    </div>
 
-            <article class="job-listing">
-                <h3>Administrative Staff</h3>
-                <p><strong>Institution:</strong> Local Municipality</p>
-                <p><strong>City:</strong> İzmir</p>
-                <p><strong>Required Departments:</strong> Public Administration, Business Administration</p>
-                <p><strong>Required Exams:</strong> KPSS P93 (Min 70)</p>
-                <p><strong>Deadline:</strong> 2025-01-15</p>
-                <p><a href="#">More Details</a></p>
-            </article>
+                    <div>
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+            </section>
 
-            <!-- Add more job listings here -->
+            <!-- Listings Section -->
+            <section class="listings-section">
+                <h2>Current Openings</h2>
 
-        </section> <!-- END of the listings section -->
+                <article class="job-listing">
+                    <h3>Expert Personnel Recruitment</h3>
+                    <p><strong>Institution:</strong> Example Ministry</p>
+                    <p><strong>City:</strong> Ankara</p>
+                    <p><strong>Required Departments:</strong> Computer Engineering, Statistics</p>
+                    <p><strong>Required Exams:</strong> KPSS P3 (Min 75), YDS (Min C)</p>
+                    <p><strong>Deadline:</strong> 2024-12-31</p>
+                    <p><a href="#">More Details</a></p>
+                </article>
 
-    </main> <!-- END of the main content -->
+                <article class="job-listing">
+                    <h3>Engineer Position</h3>
+                    <p><strong>Institution:</strong> State Water Works (DSİ)</p>
+                    <p><strong>City:</strong> İstanbul</p>
+                    <p><strong>Required Departments:</strong> Civil Engineering</p>
+                    <p><strong>Required Exams:</strong> KPSS P3 (Min 80)</p>
+                    <p><strong>Deadline:</strong> 2024-11-30</p>
+                    <p><a href="#">More Details</a></p>
+                </article>
 
-    <!-- ****** FOOTER - Cleaned up ****** -->
+                <article class="job-listing">
+                    <h3>Administrative Staff</h3>
+                    <p><strong>Institution:</strong> Local Municipality</p>
+                    <p><strong>City:</strong> İzmir</p>
+                    <p><strong>Required Departments:</strong> Public Administration, Business Administration</p>
+                    <p><strong>Required Exams:</strong> KPSS P93 (Min 70)</p>
+                    <p><strong>Deadline:</strong> 2025-01-15</p>
+                    <p><a href="#">More Details</a></p>
+                </article>
+
+                <!-- Add more job listings here -->
+
+            </section>
+
+        </main>
+        <!-- ****** End Main Content Area ****** -->
+
+    </div> <!-- End Page Container -->
+
+
     <footer>
-        <p>© 2024 Job Portal. All rights reserved.</p> <!-- Simple placeholder text -->
+        <p>© 2024 Job Portal. All rights reserved.</p>
     </footer>
 
-    <!-- You would link your JavaScript file here later for actual filtering -->
+    <!-- You would link your JavaScript file here later for actual filtering/navigation -->
     <!-- <script src="script.js"></script> -->
 
 </body>
