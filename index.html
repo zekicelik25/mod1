@@ -4,93 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opportunity Listings</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <!-- Removed link to style.css as CSS is embedded -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
     <style>
        /* General body styling */
-body {
-    font-family: sans-serif; /* Use a common sans-serif font */
-    line-height: 1.6;      /* Spacing between lines of text */
-    margin: 0;             /* Remove default browser margin */
-    background-color: #f4f4f4; /* Light grey background */
-    color: #333;           /* Dark grey text color */
-}
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
 
-/* Header styling */
-header {
-    background-color: #0056b3; /* A nice blue background */
-    color: #ffffff;           /* White text */
-    padding: 20px 0;          /* Add padding top/bottom */
-    text-align: center;
-}
+        /* Header styling */
+        header {
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-/* Main content area */
-main {
-    width: 80%;             /* Make main content area narrower */
-    max-width: 900px;       /* But not wider than 900px */
-    margin: 20px auto;      /* Add space top/bottom, center it horizontally */
-    background-color: #ffffff; /* White background for content */
-    padding: 20px;
-    border-radius: 8px;       /* Slightly rounded corners */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
-}
+        /* Main content area */
+        main {
+            width: 80%;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-/* Styling for individual job listings */
-.job-listing {
-    border: 1px solid #e0e0e0; /* Lighter border */
-    padding: 15px;
-    margin-bottom: 20px;      /* Add more space between listings */
-    background-color: #f9f9f9;
-    border-radius: 5px;
-}
+        /* Styling for individual job listings */
+        .job-listing {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
 
-/* Styling for the filter section */
-.filter-section {
-    background-color: #e9ecef; /* Slightly different background */
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-}
+        /* Styling for the filter section */
+        .filter-section {
+            background-color: #e9ecef;
+            padding: 20px;
+            margin-bottom: 30px; /* Increased space before listings */
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
 
-/* Styling for headings */
-h1, h2, h3 {
-    color: #0056b3; /* Use the header blue for headings */
-}
+        /* Styling for headings */
+        h1, h2, h3 {
+            color: #0056b3;
+        }
 
-h1 {
-    margin: 0; /* Remove default margin from main heading */
-}
+        h1 {
+            margin: 0;
+        }
 
-/* Make labels within job listings stand out */
-.job-listing strong {
-    display: inline-block;
-    min-width: 150px; /* Give labels more space */
-    color: #555;      /* Slightly lighter label color */
-}
+        h3 {
+             margin-top: 0; /* Adjust heading spacing in listing */
+        }
 
-/* Footer styling */
-footer {
-    text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    color: #777;
-    border-top: 1px solid #e0e0e0;
-}
+        /* Make labels within job listings stand out */
+        .job-listing strong {
+            display: inline-block;
+            min-width: 150px;
+            color: #555;
+        }
 
-/* Basic button styling (for the placeholder button) */
-button {
-    padding: 10px 15px;
-    background-color: #28a745; /* Green color */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer; /* Change cursor on hover */
-}
+        /* Footer styling */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #777;
+            border-top: 1px solid #e0e0e0;
+            background-color: #f4f4f4; /* Match body background */
+        }
 
-button:hover {
-    background-color: #218838; /* Darker green on hover */
-}
+        /* Basic button styling */
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em; /* Make button text slightly larger */
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Styling for form elements */
+        .filter-section label {
+            display: block; /* Put label on its own line */
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .filter-section select,
+        .filter-section input[type="text"] {
+            width: 95%; /* Make input fields wider */
+            padding: 8px;
+            margin-bottom: 10px; /* Space below input */
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .filter-section div { /* Add some space between filter groups */
+             margin-bottom: 15px;
+        }
+
+         .filter-section button[type="submit"] {
+             margin-top: 10px; /* Add space above the search button */
+         }
+
+         .job-listing a {
+             color: #0056b3;
+             text-decoration: none;
+         }
+         .job-listing a:hover {
+             text-decoration: underline;
+         }
+
     </style>
 </head>
 <body>
@@ -100,17 +142,41 @@ button:hover {
     </header>
 
     <main>
+        <!-- ****** FILTER SECTION - Correctly placed at the top ****** -->
         <section class="filter-section">
             <h2>Find Opportunities</h2>
-            <p>
-                <!-- Placeholder for actual filter controls -->
-                Filter by City: [Dropdown Here] <br>
-                Filter by Department: [Dropdown/Checkboxes Here] <br>
-                Filter by Exam: [Dropdown/Checkboxes Here] <br>
-                <button>Search</button>
-            </p>
-        </section>
+            <form action="#" method="get"> <!-- The actual form for filtering -->
+                <div>
+                    <label for="city-filter">Filter by City:</label>
+                    <select id="city-filter" name="city">
+                        <option value="">-- Select a City --</option>
+                        <option value="ankara">Ankara</option>
+                        <option value="istanbul">İstanbul</option>
+                        <option value="izmir">İzmir</option>
+                        <option value="bursa">Bursa</option>
+                        <option value="adana">Adana</option>
+                        <!-- Add more cities later -->
+                    </select>
+                </div>
 
+                <div>
+                    <label for="department-filter">Filter by Department:</label>
+                    <input type="text" id="department-filter" name="department" placeholder="e.g., Computer Engineering">
+                </div>
+
+                <div>
+                    <label for="exam-filter">Filter by Exam:</label>
+                    <input type="text" id="exam-filter" name="exam" placeholder="e.g., KPSS P3">
+                </div>
+
+                <div>
+                    <button type="submit">Search</button>
+                </div>
+            </form> <!-- END of the form -->
+        </section> <!-- END of the filter section -->
+
+
+        <!-- ****** LISTINGS SECTION - Follows the filter section ****** -->
         <section class="listings-section">
             <h2>Current Openings</h2>
 
@@ -146,64 +212,16 @@ button:hover {
 
             <!-- Add more job listings here -->
 
-        </section>
-    </main>
+        </section> <!-- END of the listings section -->
 
+    </main> <!-- END of the main content -->
+
+    <!-- ****** FOOTER - Cleaned up ****** -->
     <footer>
-        <p>        <section class="filter-section">
-            <h2>Find Opportunities</h2>
-            <form action="#" method="get"    <main>
-
-                <section class="filter-section">
-                    <h2>Find Opportunities</h2>
-                    <form action="#" method="get"> <!-- START of the form -->
-        
-                        <div>
-                            <label for="city-filter">Filter by City:</label>
-                            <select id="city-filter" name="city">
-                                <option value="">-- Select a City --</option>
-                                <option value="ankara">Ankara</option>
-                                <option value="istanbul">İstanbul</option>
-                                <option value="izmir">İzmir</option>
-                                <option value="bursa">Bursa</option>
-                                <option value="adana">Adana</option>
-                                <!-- Add more cities later -->
-                            </select>
-                        </div>
-        
-                        <div style="margin-top: 10px;">
-                            <label for="department-filter">Filter by Department:</label>
-                            <input type="text" id="department-filter" name="department" placeholder="e.g., Computer Engineering">
-                        </div>
-        
-                        <div style="margin-top: 10px;">
-                            <label for="exam-filter">Filter by Exam:</label>
-                            <input type="text" id="exam-filter" name="exam" placeholder="e.g., KPSS P3">
-                        </div>
-        
-                        <div style="margin-top: 15px;">
-                            <button type="submit">Search</button>
-                        </div>
-        
-                    </form> <!-- END of the form -->
-                </section> <!-- END of the filter section -->
-        
-        
-                <section class="listings-section">
-                    <h2>Current Openings</h2>
-                    <!-- Job listings go here -->
-                    <article class="job-listing"> ... </article>
-                    <article class="job-listing"> ... </article>
-                    <article class="job-listing"> ... </article>
-                </section>
-        
-            </main>
-
-            </form> <!-- Close the form tag -->
-        </section></p>
+        <p>© 2024 Job Portal. All rights reserved.</p> <!-- Simple placeholder text -->
     </footer>
 
-    <!-- You would link your JavaScript file here later -->
+    <!-- You would link your JavaScript file here later for actual filtering -->
     <!-- <script src="script.js"></script> -->
 
 </body>
